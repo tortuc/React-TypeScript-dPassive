@@ -1,0 +1,56 @@
+@import "mixins";
+@import "variables";
+
+.wrapper {
+  margin-bottom: 20px;
+
+  :only-child {
+    flex: 1;
+  }
+
+  @include desktop {
+    @include flex(space-between);
+  }
+}
+
+.meta {
+  @include flex(space-between);
+  color: $slate;
+  font-weight: 500;
+}
+
+.type {
+  text-transform: capitalize;
+}
+
+.wrapper > :first-child:not(:only-child) {
+  margin: 0 -20px;
+
+  .id,
+  .type {
+    padding: 0 20px;
+  }
+
+  .type {
+    border-left: 1px solid $hr;
+  }
+}
+
+.status {
+  @include flex(flex-start);
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+
+  i {
+    margin-right: 5px;
+  }
+}
+
+.title {
+  color: white;
+  font-weight: normal;
+}

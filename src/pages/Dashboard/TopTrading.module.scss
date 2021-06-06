@@ -1,0 +1,11 @@
+@import "mixins";
+
+.rank {
+  color: $battleship;
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.link {
+  @include link(#0f2aa5, $blue);
+}

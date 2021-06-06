@@ -1,0 +1,68 @@
+@import "mixins";
+
+.article {
+  padding: 30px 0;
+}
+
+.header {
+  margin-bottom: 20px;
+
+  @include desktop {
+    @include flex(space-between);
+  }
+}
+
+.heading {
+  @include flex(flex-start);
+}
+
+.title {
+  color: #0f2aa5;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+.select {
+  position: relative;
+
+  select {
+    appearance: none;
+    border: solid 1px fade-out($slate, 0.5);
+    border-radius: 3px;
+    font-size: 12px;
+    margin-left: 10px;
+    padding: 5px 10px;
+    padding-right: 30px;
+  }
+
+  i {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translate(0, -50%);
+    pointer-events: none;
+  }
+}
+
+.doc {
+  @include flex(flex-start);
+  @include link($slate, #0f2aa5);
+  border-left: $border;
+  font-size: 12px;
+  font-weight: 500;
+  margin-left: 20px;
+  padding-left: 15px;
+  text-transform: uppercase;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.icon {
+  margin-right: 4px;
+}
+
+.description {
+  margin-bottom: 30px;
+}

@@ -1,0 +1,20 @@
+@import "mixins";
+@import "variables";
+
+.component {
+  @include flex(flex-start, flex-start);
+  font-size: 12px;
+  margin-top: 30px;
+}
+
+.help {
+  color: $brown;
+}
+
+.icon {
+  margin-right: 10px;
+}
+
+.red {
+  color: $red;
+}

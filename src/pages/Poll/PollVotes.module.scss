@@ -1,0 +1,53 @@
+@import "mixins";
+
+.sm {
+  @include flex(space-between);
+  margin-top: 5px;
+}
+
+.votes {
+  @include flex(flex-end);
+}
+
+.label {
+  text-transform: uppercase;
+}
+
+.sm .label {
+  font-size: 12px;
+  margin-left: 20px;
+
+  strong {
+    margin-right: 3px;
+  }
+}
+
+.lg .label {
+  @include flex;
+  flex-direction: column;
+  flex: 1;
+  font-size: 18px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+
+  small {
+    font-size: 12px;
+    margin-top: 5px;
+  }
+
+  &:not(:first-child) {
+    border-left: $border;
+  }
+}
+
+.help {
+  @include flex;
+  font-size: 12px;
+  > * {
+    margin-right: 5px;
+  }
+}
+
+.danger {
+  color: $red;
+}
