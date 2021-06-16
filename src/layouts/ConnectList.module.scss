@@ -1,4 +1,4 @@
-@import "mixins";
+@import "../styles/mixins";
 
 .component {
   padding: 10px;
@@ -18,7 +18,7 @@
   @include flex(space-between);
   background-color: $bg;
   border-radius: 5px;
-  color:  #0f2aa5;;
+  color: #0f2aa5;
   font-size: 16px;
   font-weight: 500;
   padding: 20px;

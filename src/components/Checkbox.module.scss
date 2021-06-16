@@ -1,5 +1,5 @@
-@import "mixins";
-@import "variables";
+@import "../styles/mixins";
+@import "../styles/variables";
 
 .label {
   @include flex(flex-start);

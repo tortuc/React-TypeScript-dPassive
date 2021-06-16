@@ -1,4 +1,4 @@
-@import "mixins";
+@import "../../styles/mixins";
 
 .component {
   @include flex(space-between);
