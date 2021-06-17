@@ -2,6 +2,8 @@ import { StrictMode } from "react"
 import { render } from "react-dom"
 import { BrowserRouter as Router } from "react-router-dom"
 import * as Sentry from "@sentry/react"
+import { Provider } from "react-redux"
+import store from "./redux"
 
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration"
 import "./index.scss"
@@ -18,14 +20,16 @@ process.env.NODE_ENV === "production" &&
 render(
   <StrictMode>
     <WalletConnectProvider>
-      <Network>
-        <Contract>
-          <Router>
-            <ScrollToTop />
-            <App />
-          </Router>
-        </Contract>
-      </Network>
+      <Provider store={store}>
+        <Network>
+          <Contract>
+            <Router>
+              <ScrollToTop />
+              <App />
+            </Router>
+          </Contract>
+        </Network>
+      </Provider>
     </WalletConnectProvider>
   </StrictMode>,
   document.getElementById("mirror")
