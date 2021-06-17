@@ -76,8 +76,8 @@ const AppSidebar = () => {
   const open = useSelector(navStateSelector)
   const menu = [
     {
-      name: "My Page",
-      to: "/my",
+      name: "Home",
+      to: "/",
       icon: "home_rounded",
     },
     {
@@ -134,13 +134,13 @@ const AppSidebar = () => {
         <div className={clsx(classes.toolbar)} />
         <List>
           {menu.map((attr, index) => {
-            const isSelected = pathname.startsWith(attr.to)
+            const isSelected = pathname === attr.to
 
             return (
               <NavLink to={attr.to}>
                 <ListItem
                   button
-                  key={index}
+                  key={attr.to}
                   className={clsx(
                     classes.listItem,
                     isSelected && classes.selected
@@ -157,7 +157,7 @@ const AppSidebar = () => {
           })}
         </List>
       </Drawer>
-      <div className={clsx(open && classes.bgGrey)} onClick={toggle}></div>
+      <div className={clsx(open && classes.bgGrey)} onClick={toggle} />
     </>
   )
 }
