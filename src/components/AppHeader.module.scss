@@ -3,7 +3,6 @@
 
 .header {
   background: $header;
-  box-shadow: 0 10px 10px 0 fade-out($bg, 0.5);
   position: sticky;
   top: 0;
   z-index: $zindex-sticky;
@@ -24,9 +23,8 @@
 }
 
 .container {
-  @include desktop {
-    @include flex(space-between);
-  }
+  @include flex(space-between);
+  padding: 0 $gutter/2;
 }
 
 .wrapper {
@@ -44,31 +42,18 @@
 
 .toggle {
   @include flex;
-
-  @include desktop {
-    display: none;
-  }
+  padding-right: $gutter;
 }
 
 .support {
   @include desktop {
     @include flex;
   }
-
-  @include mobile {
-    .collapsed & {
-      display: none;
-    }
-  }
 }
 
 .connect {
   @include flex;
   padding-left: 15px;
-
-  @include mobile {
-    display: none;
-  }
 }
 
 .hr {

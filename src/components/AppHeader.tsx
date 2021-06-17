@@ -1,11 +1,12 @@
-import { useState, useEffect, ReactNode } from "react"
-import { Link, useLocation } from "react-router-dom"
+import { ReactNode } from "react"
+import { Link } from "react-router-dom"
 import classNames from "classnames/bind"
-import Container from "./Container"
 import Icon from "./Icon"
-import Menu from "./Menu"
 import Badge from "./Badge"
 import styles from "./AppHeader.module.scss"
+import { useDispatch, useSelector } from "react-redux"
+import { navStateSelector } from "../redux/global/selector"
+import { updateNavState } from "../redux/global"
 
 const cx = classNames.bind(styles)
 
@@ -18,43 +19,32 @@ interface Props {
 }
 
 const AppHeader = ({ logo, menu, connect, border, testnet }: Props) => {
-  const { key } = useLocation()
-  const [isOpen, setIsOpen] = useState(false)
-  const toggle = () => setIsOpen(!isOpen)
-  const hideToggle = menu.every((item) => item.desktopOnly)
-
-  useEffect(() => {
-    setIsOpen(false)
-  }, [key])
+  const navState = useSelector(navStateSelector)
+  const dispatch = useDispatch()
+  const toggle = () => {
+    dispatch(updateNavState(!navState))
+  }
 
   return (
-    <header className={cx(styles.header, { collapsed: !isOpen })}>
-      <Container>
-        <div className={styles.container}>
-          <section className={styles.wrapper}>
-            <h1>
-              <Link to="/" className={styles.logo}>
-                {logo}
-              </Link>
-            </h1>
+    <header className={cx(styles.header, { collapsed: true })}>
+      <div className={styles.container}>
+        <section className={styles.wrapper}>
+          <button className={styles.toggle} onClick={toggle}>
+            <Icon name={navState ? "menu_open" : "menu"} size={24} />
+          </button>
+          <h1>
+            <Link to="/" className={styles.logo}>
+              {logo}
+            </Link>
+          </h1>
 
-            {testnet && <Badge className={styles.badge}>Testnet</Badge>}
+          {testnet && <Badge className={styles.badge}>Testnet</Badge>}
+        </section>
 
-            {!hideToggle && (
-              <button className={styles.toggle} onClick={toggle}>
-                <Icon name={!isOpen ? "menu" : "close"} size={24} />
-              </button>
-            )}
-          </section>
-
-          <section className={styles.support}>
-            <Menu list={menu} key={key} />
-            <div className={styles.connect}>{connect}</div>
-          </section>
-        </div>
-
-        {border && !isOpen && <hr className={styles.hr} />}
-      </Container>
+        <section className={styles.support}>
+          <div className={styles.connect}>{connect}</div>
+        </section>
+      </div>
     </header>
   )
 }
